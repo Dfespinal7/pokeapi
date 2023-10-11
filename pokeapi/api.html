@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeAPI</title>
+</head>
+<body>
+    <h1>PokeAPI</h1>
+
+    <label for="pokemonInput">Buscar Pokémon por número o nombre: </label>
+    <input type="text" id="pokemonInput">
+    <button onclick="buscarPokemon()">Buscar</button>
+
+    <div id="pokemonData">  
+        <h2 id="pokemonName7"></h2>
+        <img id="pokemonImage1" src="" alt="">
+        <p id="pokemonAbility"></p>
+    </div>
+
+    <script>
+        function buscarPokemon() {
+            const input = document.getElementById('pokemonInput').value.toLowerCase();
+            fetch(`https://pokeapi.co/api/v2/pokemon/${input}/`)
+                .then(response => response.json())
+                .then(poke => {
+                    const pokemonName = (pokemonName7)
+                    const pokemonImage =(pokemonImage1);
+                    const pokemonAbility = document.getElementById('pokemonAbility');
+
+                    pokemonName.textContent = `Nombre: ${poke.name}`;
+                    pokemonImage.src = poke.sprites.front_default;
+                    pokemonAbility.textContent = `Habilidad: ${poke.abilities[0].ability.name}`;
+                })
+
+        }
+    </script>
+</body>
+</html>
